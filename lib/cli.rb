@@ -24,7 +24,6 @@ class CLI
             Details.new(choice).tourney_details
             start
        end
-#aye
     end
 
     def reciever
