@@ -5,14 +5,14 @@ class CLI
     end
 
     def start
-        Tourneys.new.list
+        Scraper.new
         reciever
         choice = gets.chomp.to_i
         num = choice - 1
 
        if choice > 0 && choice < 6
-            tourney = Tourneys.names[num]
-            Details.new(tourney).tourney_details
+            tourney = Scraper.names[num]
+            Tournament.new(tourney).tourney_details
             start
        elsif choice < 0  || choice >= 7
             error
@@ -21,7 +21,7 @@ class CLI
        elsif choice == 6
             puts "What tournament you looking for? Enter the tourney with a space in between each word!"
             choice = gets.chomp.to_s
-            Details.new(choice).tourney_details
+            Tournamnet.new(choice).tourney_details
             start
        end
     end

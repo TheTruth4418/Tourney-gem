@@ -1,9 +1,9 @@
-class Tourneys
+class Scraper
 
     @@tournaments = []
 
     def initialize
-        Tourneys.scrape_tourneys
+        Scraper.scrape_tourneys
     end
 
     def self.scrape_tourneys
@@ -13,15 +13,16 @@ class Tourneys
            name = tourney.css("div.TournamentCardHeading__title").text
            @@tournaments << name
         end
+        Scraper.list
     end
 
     def self.names
         @@tournaments.slice(0,5)
     end
 
-    def list 
+    def self.list 
         count = 1
-            Tourneys.names.each do |name|
+            Scraper.names.each do |name|
                 puts "#{count}. #{name}"
                 count += 1
             end

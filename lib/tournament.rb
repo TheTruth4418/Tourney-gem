@@ -1,15 +1,10 @@
-class Details
+class Tournament
 attr_accessor :tourney_name, :games
     def initialize(tourney_name)
         @tourney_name = tourney_name
-        @name = tourney_name.split(" ")
         @link_friendly = []
         @games = []
-        @name.each do |x| 
-            x = x.tr('#', '')
-            @link_friendly << x if !(x == " " || x == "-")
-        end
-
+        format
         scrape_details
     end
 
@@ -22,7 +17,14 @@ attr_accessor :tourney_name, :games
         doc.css("div.sgg1XcrV h4 a").each do |game|
             @games << game.text
         end
-        
+    end
+
+    def format
+        @name = tourney_name.split(" ")
+        @name.each do |x| 
+            x = x.tr('#.', '')
+            @link_friendly << x if !(x == " " || x == "-")
+        end
     end
 
     def games_list
