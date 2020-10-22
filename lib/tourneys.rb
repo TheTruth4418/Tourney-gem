@@ -27,12 +27,3 @@ class Tourneys
             end
     end
 end
-
-
-
-
-
-
-#tourneys: doc.css("div.TournamentCardContainer")
-
-
